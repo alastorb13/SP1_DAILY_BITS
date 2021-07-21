@@ -1,0 +1,67 @@
+#container {
+  animation-name: start;
+  width: 100vw;
+  height: 100vh;
+  background-color: pink;
+  animation-duration: 4s;
+}
+@keyframes start {
+  0% {
+    background-color: #873dec;
+  }
+  50% {
+    background-color: #873dec;
+  }
+  100% {
+    background-color: pink;
+  }
+}
+#login {
+  animation-name: showlogin;
+  animation-duration: 8s;
+  color: white;
+}
+@keyframes showlogin {
+  0% {
+    visibility: hidden;
+    display: none;
+  }
+  50% {
+    visibility: hidden;
+    display: none;
+  }
+  100% {
+    visibility: visible;
+    display: block;
+  }
+}
+
+#loader {
+  animation-name: load;
+  animation-duration: 4s;
+  background-image: url(../media/Logo/LogoPurpuraFondo.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 23%;
+  width: 80px;
+  height: 80px;
+  background-color: #873dec;
+}
+@keyframes load {
+  0% {
+    border-radius: 0%;
+    width: 100vw;
+    height: 100vh;
+  }
+  50% {
+    border-radius: 0%;
+    width: 100vw;
+    height: 100vh;
+  }
+  100% {
+    border-radius: 23%;
+    width: 80px;
+    height: 80px;
+  }
+}

@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+#container {
+  animation-name: start;
+  width: 100vw;
+  height: 100vh;
+  background-color: grey;
+  animation-duration: 4s;
+}
+
+.graycolor {
+  background-color: #232e35;
+}
+
+.textcenter {
+  text-align: center;
+}
