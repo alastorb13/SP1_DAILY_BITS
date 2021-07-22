@@ -1,3 +1,7 @@
+.container {
+  overflow-y: auto;
+}
+
 .contenedorp {
   padding: 20px 20px 20px 20px;
   margin: 10px 10px 10px 10px;
@@ -6,13 +10,19 @@
 .contenedorq {
   display: flex;
   position: relative;
-  width: 60px;
+  width: auto;
   height: 60px;
   margin: auto;
 }
 .contenedorr {
   width: 80px;
   height: 80px;
+  position: absolute;
+  padding-top: 15vh;
+}
+.contenedors {
+  width: 80px;
+  height: 110px;
   position: absolute;
   padding-top: 15vh;
 }

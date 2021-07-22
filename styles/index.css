@@ -2,7 +2,7 @@
   animation-name: start;
   width: 100vw;
   height: 100vh;
-  background-color: pink;
+  background-color: #16161a;
   animation-duration: 4s;
 }
 @keyframes start {
@@ -13,7 +13,7 @@
     background-color: #873dec;
   }
   100% {
-    background-color: pink;
+    background-color: #16161a;
   }
 }
 #login {

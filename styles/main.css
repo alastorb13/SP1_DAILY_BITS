@@ -1,12 +1,16 @@
 * {
   box-sizing: border-box;
 }
+a {
+  color: white !important;
+}
+a:hover {
+  color: green !important;
+}
 #container {
-  animation-name: start;
   width: 100vw;
   height: 100vh;
-  background-color: grey;
-  animation-duration: 4s;
+  background-color: #16161a;
 }
 
 .graycolor {
@@ -15,4 +19,12 @@
 
 .textcenter {
   text-align: center;
+  color: white;
+}
+
+.margauto {
+  display: flex;
+  position: relative;
+  margin: auto;
+  justify-content: space-around;
 }
