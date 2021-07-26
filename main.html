@@ -29,7 +29,7 @@
   <body>
     <div id="container">
       <div id="house">
-        <div class="container">
+        <div id="principal" class="container">
           <!-- Inicio contenedor de un solo botón -->
           <div class="row row-cols-1">
             <div class="col">
@@ -172,8 +172,9 @@
           navbar-expand
         "
       >
-        <div class="navbar-nav d-flex justify-content-md-between mx-auto">
-          <a class="nav-item nav-link textcenter" href="#"
+        <div class="navbar-nav d-flex justify-content-md-between mx-auto" >
+          <!-- Botón Home -->
+          <a class="nav-item nav-link textcenter" id="home" href="#"
             ><i
               class="bi-house-door"
               style="font-size: 1.5rem"
@@ -182,7 +183,8 @@
             ></i>
             <p>Home</p></a
           >
-          <a class="nav-item nav-link textcenter" href="#"
+          <!-- Botón Estadísticas-->
+          <a class="nav-item nav-link textcenter" id="stats" href="#"
             ><i
               class="bi-bar-chart-line"
               style="font-size: 1.5rem"
@@ -191,7 +193,8 @@
             ></i>
             <p>Estadísticas</p></a
           >
-          <a class="nav-item nav-link textcenter" href="#"
+          <!-- Botón Perfil -->
+          <a class="nav-item nav-link textcenter" id="perfil" href="#"
             ><i
               class="bi-person"
               style="font-size: 1.5rem"
@@ -203,7 +206,8 @@
         </div>
       </nav>
     </div>
-    <script type="text/javascript" src="scripts/main.js"></script>
-    <script type="text/javascript" src="scripts/components.js"></script>
+    <script type="module" src="scripts/data.js"></script>
+    <script type="module" src="scripts/main.js"></script>
+    <script type="module" src="scripts/components.js"></script>
   </body>
 </html>

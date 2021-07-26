@@ -16,12 +16,49 @@ a:hover {
 .graycolor {
   background-color: #232e35;
 }
+.violetcolor {
+  background-color: violet;
+}
+.greencolor {
+  background-color: green;
+}
+.redcolor {
+  background-color: red;
+}
 
 .textcenter {
   text-align: center;
   color: white;
 }
+.textwhite {
+  color: white;
+}
+.textviolet {
+  color: violet !important;
+}
+.textgreen {
+  color: green !important;
+}
+.textred {
+  color: red !important;
+}
+.textgray {
+  color: gray;
+}
 
+.linea1 {
+  border: solid;
+  border-color: blueviolet;
+}
+.linea2 {
+  border: solid;
+  border-color: green;
+}
+
+.lineaE {
+  border: solid;
+  border-color: red;
+}
 .margauto {
   display: flex;
   position: relative;

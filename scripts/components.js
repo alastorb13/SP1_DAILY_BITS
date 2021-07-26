@@ -18,8 +18,6 @@ setProgress(50);
 
 var circle2 = document.getElementById("circle2");
 
-console.log(circle2);
-
 var radius2 = circle2.r.baseVal.value;
 var circumference2 = radius2 * 2 * Math.PI;
 
@@ -36,8 +34,6 @@ setProgress2(70);
 /*Circulo de progreso3*/
 
 var circle3 = document.getElementById("circle3");
-
-console.log(circle3);
 
 var radius3 = circle3.r.baseVal.value;
 var circumference3 = radius3 * 2 * Math.PI;
@@ -56,8 +52,6 @@ setProgress3(10);
 
 var circle4 = document.getElementById("circle4");
 
-console.log(circle4);
-
 var radius4 = circle4.r.baseVal.value;
 var circumference4 = radius4 * 2 * Math.PI;
 
@@ -74,8 +68,6 @@ setProgress4(70);
 /*Circulo de progreso5*/
 
 var circle5 = document.getElementById("circle5");
-
-console.log(circle5);
 
 var radius5 = circle5.r.baseVal.value;
 var circumference5 = radius5 * 2 * Math.PI;
