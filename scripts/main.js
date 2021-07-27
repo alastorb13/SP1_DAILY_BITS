@@ -1,4 +1,5 @@
-import { data, testdata } from "/scripts/data.js";
+import { data } from "/scripts/data.js";
+import { settingProgress } from "/scripts/components.js";
 console.group("uno");
 
 /* !!!!!!!!!!!!!!!!!!!!!!!!!DEFINICION DE PARTES IMPORTANTES DE LA PAGINA */
@@ -27,7 +28,6 @@ let btn = false;
 let ct;
 let fl;
 let vd;
-testHtml = document.createTextNode("Algo");
 
 /* Definciiones de prueba*/
 
@@ -41,25 +41,20 @@ let perfilData = {
   incorrectas: 0,
 };
 
-let vidas;
-let preguntaActual;
-
 /* !!!!!!!!!!!!!!!!!!!!!!!!! Imprimir Pagina */
-function actBarraDeVida(vida) {
-  let BarraDeVida = `<div id='vidas' class='textwhite'><h3>${vida}</h3></div>`;
-  return BarraDeVida;
-}
+
+settingProgress();
+
 function preguntasA(data, categoria, preguntaActual) {
   let orden = desorganizarRespuestas("a");
-  console.log(orden);
-  let ord1 = data[categoria].questions[preguntaActual].Qans[0];
-  let ord2 = data[categoria].questions[preguntaActual].Qans[1];
-  let ord3 = data[categoria].questions[preguntaActual].Qans[2];
-  let ord = [ord1, ord2, ord3];
-  console.log(ord1[1] + "  " + ord2[1] + "  " + ord3[1]);
-  let ans1 = ord[orden[0]][orden[0] + 1];
-  let ans2 = ord[orden[1]][orden[1] + 1];
-  let ans3 = ord[orden[2]][orden[2] + 1];
+  console.log(data[categoria].questions[preguntaActual].Qans[0]);
+  let ans1 = data[categoria].questions[preguntaActual].Qans[0][1];
+  let ans2 = data[categoria].questions[preguntaActual].Qans[1][2];
+  let ans3 = data[categoria].questions[preguntaActual].Qans[2][3];
+  let ans = [ans1, ans2, ans3];
+  ans1 = ans[orden[0]];
+  ans2 = ans[orden[1]];
+  ans3 = ans[orden[2]];
   let enunciado = `
   <div id='pregunta' class='textwhite'>
     <h1>${data[categoria].questions[preguntaActual].QQuest}</h1>
@@ -81,28 +76,27 @@ function preguntasA(data, categoria, preguntaActual) {
   <div id='corrección'>
     <button id='boton' type="button" class="btn btn-secondary">comprobar</button>
   </div>`;
-  ordenS = [orden[0], orden[1], orden[2]];
-  console.log("enunciado    " + orden);
+  ordenS = orden;
   let retorno = [orden, enunciado];
   return retorno;
 }
+
 function preguntasB(data, categoria, preguntaActual) {
   let orden = desorganizarRespuestas("b");
 
   let enunciado = ``;
   function insertans() {
-    let ord1 = data[categoria].questions[preguntaActual].Qans[0];
-    let ord2 = data[categoria].questions[preguntaActual].Qans[1];
-    let ord3 = data[categoria].questions[preguntaActual].Qans[2];
-    let ord4 = data[categoria].questions[preguntaActual].Qans[3];
-    let ord5 = data[categoria].questions[preguntaActual].Qans[4];
+    let ord1 = data[categoria].questions[preguntaActual].Qans[0][1];
+    let ord2 = data[categoria].questions[preguntaActual].Qans[1][2];
+    let ord3 = data[categoria].questions[preguntaActual].Qans[2][3];
+    let ord4 = data[categoria].questions[preguntaActual].Qans[3][4];
+    let ord5 = data[categoria].questions[preguntaActual].Qans[4][5];
     let ord = [ord1, ord2, ord3, ord4, ord5];
-    let ans1 = ord[orden[0]][orden[0] + 1];
-    let ans2 = ord[orden[1]][orden[1] + 1];
-    let ans3 = ord[orden[2]][orden[2] + 1];
-    let ans4 = ord[orden[3]][orden[3] + 1];
-    let ans5 = ord[orden[4]][orden[4] + 1];
-    console.log(ans1, ans2, ans3, ans4, ans5);
+    let ans1 = ord[orden[0]];
+    let ans2 = ord[orden[1]];
+    let ans3 = ord[orden[2]];
+    let ans4 = ord[orden[3]];
+    let ans5 = ord[orden[4]];
     enunciado = `
   <div id='pregunta' class='textwhite'><h1>${data[categoria].questions[preguntaActual].QQuest}</h1></div>
   <div id='espRespuesta' class = 'textwhite'></div>
@@ -117,9 +111,11 @@ function preguntasB(data, categoria, preguntaActual) {
     <button id='boton' type="button" class="btn btn-secondary">comprobar</button>
   </div>
   `;
-    ordenG = [orden[0], orden[1], orden[2], orden[3], orden[4]];
-    console.log("ordenS  " + ordenS + enunciado);
+    ordenG = orden;
+    ordenS = orden;
+    ordenL = [];
   }
+
   insertans();
 
   let retorno = [orden, enunciado];
@@ -128,16 +124,17 @@ function preguntasB(data, categoria, preguntaActual) {
 
 function preguntasC(data, categoria, preguntaActual) {
   let orden = desorganizarRespuestas("c");
-  let ord1 = data[categoria].questions[preguntaActual].Qans[0];
-  let ord2 = data[categoria].questions[preguntaActual].Qans[1];
-  let ord3 = data[categoria].questions[preguntaActual].Qans[2];
-  let ord4 = data[categoria].questions[preguntaActual].Qans[3];
-  let ord5 = data[categoria].questions[preguntaActual].Qans[4];
+
+  let ord1 = data[categoria].questions[preguntaActual].Qans[0][1];
+  let ord2 = data[categoria].questions[preguntaActual].Qans[1][2];
+  let ord3 = data[categoria].questions[preguntaActual].Qans[2][3];
+  let ord4 = data[categoria].questions[preguntaActual].Qans[3][4];
+
   let ord = [ord1, ord2, ord3, ord4];
-  let ans1 = ord[orden[0]][orden[0] + 1];
-  let ans2 = ord[orden[1]][orden[1] + 1];
-  let ans3 = ord[orden[2]][orden[2] + 1];
-  let ans4 = ord[orden[3]][orden[3] + 1];
+  let ans1 = ord[orden[0]];
+  let ans2 = ord[orden[1]];
+  let ans3 = ord[orden[2]];
+  let ans4 = ord[orden[3]];
 
   let enunciado = `
   
@@ -159,13 +156,12 @@ function preguntasC(data, categoria, preguntaActual) {
     </div>
     <div id='espRespuesta' class = 'textwhite'></div>
     <div id='respuesta5'></div>
-    <div id='corrección'>
+    <div id='correccion'>
       <button id='boton' type="button" class="btn btn-secondary">comprobar</button>
     </div>
   </div>
   `;
-  ordenS = [orden[0], orden[1], orden[2], orden[3]];
-  console.log("ordenS    " + ordenS);
+  ordenS = orden;
   let retorno = [orden, enunciado];
   return retorno;
 }
@@ -252,13 +248,14 @@ function respuestasTipoB() {
     if (btn == false) {
       ordenL = ordenL.join();
       btn = true;
-      if (ordenL == ordenS) {
+      if (ordenL == ordenG) {
         boton.className = "btn btn-success";
         vd = 1;
         return console.log("bien");
       } else {
         boton.className = "btn btn-danger";
         fl = 1;
+        console.log(ordenL + " != " + ordenS);
         return console.log("mal");
       }
     } else if (btn == true) {
@@ -269,35 +266,16 @@ function respuestasTipoB() {
       if (perfilData.categorias[ct] == 13) {
         princ();
       } else {
-        let newFace = imprimirPreguntas(perfilData, data, ct);
-        let tipo = prepararTipo(perfilData, data, ct);
-        changeFace(newFace);
-        if (tipo[2] == "a") {
-          respuestasTipoA();
-        } else if (tipo[2] == "b") {
-          respuestasTipoB();
-        } else if (tipo[2] == "c") {
-          respuestasTipoC();
-        }
+        rpp1 = false;
+        rpp2 = false;
+        rpp3 = false;
+        rpp4 = false;
+        rpp5 = false;
+        ordenL = [];
+        categorySelect(ct);
       }
     }
   }
-  /*
-
-  let newFace = imprimirPreguntas(perfilData, data, 1);
-  let tipo = prepararTipo(perfilData, data, 1);
-  ct = 1;
-  changeFace(newFace);
-  if (tipo[2] == "a") {
-    respuestasTipoA();
-  } else if (tipo[2] == "b") {
-    respuestasTipoB();
-  } else if (tipo[2] == "c") {
-    respuestasTipoC();
-  }
-}
-
-*/
 
   respuesta1.addEventListener("click", rp1);
   respuesta2.addEventListener("click", rp2);
@@ -344,7 +322,6 @@ function respuestasTipoA() {
     iniciar();
     respuesta3.classList.add("violetcolor");
     refrescar();
-    console.log(respuesta3);
     seleccion = ordenS[2];
   }
 
@@ -360,6 +337,7 @@ function respuestasTipoA() {
       } else {
         boton.className = "btn btn-danger";
         fl = 1;
+        console.log(ordenL + " != " + ordenS);
         return console.log("mal");
       }
     } else if (btn == true) {
@@ -367,23 +345,15 @@ function respuestasTipoA() {
       perfilData.correctas += vd;
       perfilData.incorrectas += fl;
       btn = false;
+
       if (perfilData.categorias[ct] == 13) {
         princ();
       } else {
-        let newFace = imprimirPreguntas(perfilData, data, ct);
-        let tipo = prepararTipo(perfilData, data, ct);
-        changeFace(newFace);
-        if (tipo[2] == "a") {
-          respuestasTipoA();
-        } else if (tipo[2] == "b") {
-          respuestasTipoB();
-        } else if (tipo[2] == "c") {
-          respuestasTipoC();
-        }
+        categorySelect(ct);
       }
     }
   }
-  console.log(ordenS);
+
   respuesta1.addEventListener("click", lineaRespuesta1);
   respuesta2.addEventListener("click", lineaRespuesta2);
   respuesta3.addEventListener("click", lineaRespuesta3);
@@ -397,7 +367,7 @@ function respuestasTipoC() {
   let respuesta2 = document.getElementById("respuesta2");
   let respuesta3 = document.getElementById("respuesta3");
   let respuesta4 = document.getElementById("respuesta4");
-  console.log(respuestas);
+  let correccion = document.getElementById("correccion");
   let seleccion;
 
   function refrescar() {
@@ -406,6 +376,7 @@ function respuestasTipoC() {
     respuestas.appendChild(respuesta2);
     respuestas.appendChild(respuesta3);
     respuestas.appendChild(respuesta4);
+    respuestas.appendChild(correccion);
   }
   function iniciar() {
     respuesta1.classList.remove("violetcolor");
@@ -429,14 +400,12 @@ function respuestasTipoC() {
     iniciar();
     respuesta3.classList.add("violetcolor");
     refrescar();
-    console.log(respuesta3);
     seleccion = ordenS[2];
   }
   function lineaRespuesta4() {
     iniciar();
     respuesta4.classList.add("violetcolor");
     refrescar();
-    console.log(respuesta4);
     seleccion = ordenS[3];
   }
   function comprobar() {
@@ -458,19 +427,11 @@ function respuestasTipoC() {
       perfilData.correctas += vd;
       perfilData.incorrectas += fl;
       btn = false;
-      if (perfilData.categorias[ct] == 13) {
+      console.log(perfilData.categorias[ct]);
+      if (perfilData.categorias[ct] == 12) {
         princ();
       } else {
-        let newFace = imprimirPreguntas(perfilData, data, ct);
-        let tipo = prepararTipo(perfilData, data, ct);
-        changeFace(newFace);
-        if (tipo[2] == "a") {
-          respuestasTipoA();
-        } else if (tipo[2] == "b") {
-          respuestasTipoB();
-        } else if (tipo[2] == "c") {
-          respuestasTipoC();
-        }
+        categorySelect(ct);
       }
     }
   }
@@ -481,6 +442,19 @@ function respuestasTipoC() {
   respuesta3.addEventListener("click", lineaRespuesta3);
   respuesta4.addEventListener("click", lineaRespuesta4);
   boton.addEventListener("click", comprobar);
+}
+
+function asignarEscuchadores(category) {
+  console.log(category);
+  if (category == "a") {
+    respuestasTipoA();
+  } else if (category == "b") {
+    respuestasTipoB();
+  } else if (category == "c") {
+    respuestasTipoC();
+  } else {
+    console.log("No se ha asignado escuchador");
+  }
 }
 
 /* !!!!!!!!!!!!!!!!!!!!!!!!!FUNCIONALIDADES DE LOS BOTONES */
@@ -497,80 +471,70 @@ function changeFace(newFace) {
   return;
 }
 
+function categorySelect(ct) {
+  if (ct == 0) {
+    categoryhtml();
+  } else if (ct == 1) {
+    categorycss();
+  } else if (ct == 2) {
+    categoryjs();
+  } else if (ct == 3) {
+    categoryfigma();
+  } else if (ct == 4) {
+    categoryux();
+  } else {
+    princ;
+  }
+}
 function categoryhtml() {
   let fragmentoDePrueba = imprimirPreguntas(perfilData, data, 0);
   let tipo = prepararTipo(perfilData, data, 0);
   ct = 0;
+  btn = false;
   console.log(tipo[2]);
   changeFace(fragmentoDePrueba);
-  if (tipo[2] == "a") {
-    respuestasTipoA();
-  } else if (tipo[2] == "b") {
-    respuestasTipoB();
-  } else if (tipo[2] == "c") {
-    respuestasTipoC();
-  }
+  asignarEscuchadores(tipo[2]);
 }
 
 function categorycss() {
   let newFace = imprimirPreguntas(perfilData, data, 1);
   let tipo = prepararTipo(perfilData, data, 1);
   ct = 1;
+  btn = false;
   changeFace(newFace);
-  if (tipo[2] == "a") {
-    respuestasTipoA();
-  } else if (tipo[2] == "b") {
-    respuestasTipoB();
-  } else if (tipo[2] == "c") {
-    respuestasTipoC();
-  }
+  asignarEscuchadores(tipo[2]);
 }
 
 function categoryjs() {
+  ct = 2;
+  btn = false;
   let newFace = imprimirPreguntas(perfilData, data, 2);
   let tipo = prepararTipo(perfilData, data, 2);
-  ct = 2;
-  console.log(newFace);
   changeFace(newFace);
-  if (tipo[2] == "a") {
-    respuestasTipoA();
-  } else if (tipo[2] == "b") {
-    respuestasTipoB();
-  } else if (tipo[2] == "c") {
-    respuestasTipoC();
-  }
+  asignarEscuchadores(tipo[2]);
 }
 
 function categoryfigma() {
   let newFace = imprimirPreguntas(perfilData, data, 3);
   let tipo = prepararTipo(perfilData, data, 3);
   ct = 3;
+  btn = false;
   changeFace(newFace);
-  if (tipo[2] == "a") {
-    respuestasTipoA();
-  } else if (tipo[2] == "b") {
-    respuestasTipoB();
-  } else if (tipo[2] == "c") {
-    respuestasTipoC();
-  }
+  asignarEscuchadores(tipo[2]);
 }
 
 function categoryux() {
   let newFace = imprimirPreguntas(perfilData, data, 4);
   let tipo = prepararTipo(perfilData, data, 4);
   ct = 4;
+  btn = false;
   changeFace(newFace);
-  if (tipo[2] == "a") {
-    respuestasTipoA();
-  } else if (tipo[2] == "b") {
-    respuestasTipoB();
-  } else if (tipo[2] == "c") {
-    respuestasTipoC();
-  }
+  asignarEscuchadores(tipo[2]);
 }
 
 function princ() {
   clearGlobalVariables();
+  settingProgress();
   changeFace(principalbk);
   house.appendChild(principal);
 }
@@ -589,14 +553,6 @@ function clearGlobalVariables() {
 }
 
 /* Operaciones con preguntas */
-
-function extraerPregunta(categoria, pregunta) {
-  let enunciado = data[categoria].questions[pregunta].QQuest;
-  let tipo = data[categoria].questions[pregunta].Qtype;
-  let respuestas = data[categoria].questions[pregunta].Qans;
-  let retorno = [tipo, enunciado, respuestas];
-  return retorno;
-}
 
 function rutaDePreguntas() {
   let ct1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -643,5 +599,6 @@ function func(a, b) {
   /* Funcion de aleatoriedad para desordenar una lista*/
   return 0.5 - Math.random();
 }
+/*export*/
 
-/* !!!!!!!!!!!!!!!!!!!!! FUCIONANDO PREGUNTAS Y EL DOM */
+export { perfilData };

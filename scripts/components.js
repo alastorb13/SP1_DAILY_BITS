@@ -1,3 +1,5 @@
+import { perfilData } from "/scripts/main.js";
+
 /*Circulo de progreso1*/
 
 var circle = document.querySelector("circle");
@@ -11,8 +13,6 @@ function setProgress(percent) {
   const offset = circumference - (percent / 100) * circumference;
   circle.style.strokeDashoffset = offset;
 }
-
-setProgress(50);
 
 /*Circulo de progreso2*/
 
@@ -29,8 +29,6 @@ function setProgress2(percent) {
   circle2.style.strokeDashoffset = offset;
 }
 
-setProgress2(70);
-
 /*Circulo de progreso3*/
 
 var circle3 = document.getElementById("circle3");
@@ -45,8 +43,6 @@ function setProgress3(percent) {
   const offset = circumference3 - (percent / 100) * circumference3;
   circle3.style.strokeDashoffset = offset;
 }
-
-setProgress3(10);
 
 /*Circulo de progreso4*/
 
@@ -63,8 +59,6 @@ function setProgress4(percent) {
   circle4.style.strokeDashoffset = offset;
 }
 
-setProgress4(70);
-
 /*Circulo de progreso5*/
 
 var circle5 = document.getElementById("circle5");
@@ -80,4 +74,18 @@ function setProgress5(percent) {
   circle5.style.strokeDashoffset = offset;
 }
 
-setProgress5(30);
+function settingProgress() {
+  let set1 = (perfilData.categorias[0] * 100) / 12;
+  let set2 = (perfilData.categorias[1] * 100) / 12;
+  let set3 = (perfilData.categorias[2] * 100) / 12;
+  let set4 = (perfilData.categorias[3] * 100) / 12;
+  let set5 = (perfilData.categorias[4] * 100) / 12;
+  console.log(set1);
+  setProgress(set1);
+  setProgress2(set2);
+  setProgress3(set3);
+  setProgress4(set4);
+  setProgress5(set5);
+}
+
+export { settingProgress };
