@@ -26,14 +26,15 @@ let rpp4 = false;
 let rpp5 = false;
 let btn = false;
 let ct;
-let fl;
-let vd;
+let fl = 0;
+let vd = 0;
 
 /* Definciiones de prueba*/
 
 let perfilData = {
   nombre: "alguien",
   foto: "media/Photo/oso.png",
+  correo: "alguien@algo.com",
   categorias: [5, 7, 3, 8, 11],
   ruta: rutaDePreguntas(),
   tiempo: 0,
@@ -45,10 +46,57 @@ let perfilData = {
 
 settingProgress();
 
+function mostrarPerfil() {
+  let foto = perfilData.foto;
+  let nombre = perfilData.nombre;
+  let correo = perfilData.correo;
+
+  let perfilhtml = `
+  <div id=contenedorEstadisticas>
+    <div id = 'titulo'><h1>Perfil</h1></div>
+    <div id = 'imagen-perfil'><img src='${foto}'><img></div>
+    <div id= 'respuesta1'><h3>${nombre}</h3></div>
+    <div id= 'respuesta2'><h3>${correo}</h3></div>
+    <div id= 'cerrar-secion'><h5>Cerrar Sesión</h5></div>
+  
+  `;
+  return perfilhtml;
+}
+mostrarEstadisticas();
+
+function mostrarEstadisticas() {
+  function sumar_array(array_numeros) {
+    var suma = 0;
+    array_numeros.forEach(function (numero) {
+      suma += numero;
+    });
+    return suma;
+  }
+  let tiemporegistro = "respuesta simbolica";
+  let tiempo = "respuesta simbolica";
+  let respuestasContestadas = sumar_array(perfilData.categorias);
+  let RespuestasCorrectas = perfilData.correctas;
+  let RespuestasIncorrectas = perfilData.incorrectas;
+
+  let estadisticashtml = `
+  <div id=contenedorEstadisticas>
+    <div id = 'titulo'><h1>Estadísticas</h1></div>
+    <div id = 'enunciado'><h4>${tiemporegistro}</h4></div>
+    <div id= 'respuesta1'><h3>Tiempo de estudio en horas    ${tiempo}</h3></div>
+    <div id= 'respuesta2'><h3>respuestas contestadas     ${respuestasContestadas}</h3></div>
+    <div id= 'respuesta3'><h3>respuestas correctas      ${RespuestasCorrectas}</h3></div>
+    <div id= 'respuesta4'><h3>Respuestas incorrectas     ${RespuestasIncorrectas}</h3></div>
+  
+  `;
+  return estadisticashtml;
+}
+
 function preguntasA(data, categoria, preguntaActual) {
   let orden = desorganizarRespuestas("a");
+
   console.log(data[categoria].questions[preguntaActual].Qans[0]);
   let ans1 = data[categoria].questions[preguntaActual].Qans[0][1];
+  console.log(data[categoria].questions[preguntaActual].Qans[1][2]);
   let ans2 = data[categoria].questions[preguntaActual].Qans[1][2];
   let ans3 = data[categoria].questions[preguntaActual].Qans[2][3];
   let ans = [ans1, ans2, ans3];
@@ -465,6 +513,8 @@ category3.addEventListener("click", categoryjs);
 category4.addEventListener("click", categoryfigma);
 category5.addEventListener("click", categoryux);
 homeBtn.addEventListener("click", princ, true);
+statsBtn.addEventListener("click", statsface);
+perfilBtn.addEventListener("click", perfilface);
 
 function changeFace(newFace) {
   house.innerHTML = newFace;
@@ -539,6 +589,13 @@ function princ() {
   house.appendChild(principal);
 }
 
+function statsface() {
+  changeFace(mostrarEstadisticas());
+}
+
+function perfilface() {
+  changeFace(mostrarPerfil());
+}
 /* FUNCIONES PARA AGREGAR O TRANSFORMAR CONTENIDOS DEL HTML */
 
 function clearGlobalVariables() {
